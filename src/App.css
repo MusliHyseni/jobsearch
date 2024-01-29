@@ -1,5 +1,6 @@
 * {
   background-color: rgb(4, 13, 18);
+  font-family: "Montserrat", sans-serif;
 }
 
 .App {
@@ -15,5 +16,41 @@ nav, .navDiv, Link, li, a, span, .ulHolder {
   background-color:rgb(24, 61, 61) !important;
 }
 
+.card {
+  height: 450px !important;
+}
 
+h1 {
+  text-align: center;
+  color: #fff;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 5px rgb(49, 92, 92),
+    0 0 8px rgb(25, 224, 224);
+}
 
+.card h6.card-header, .card-footer {
+  color: rgb(147, 177, 166) !important;
+}
+
+.card h6.card-header:hover, .card-footer:hover {
+  color: rgb(177, 209, 197) !important;
+}
+
+.card-header{
+  background-color: rgb(41, 73, 73) !important;
+  height: 17% !important;
+}
+
+.card-title {
+  height: 25% !important;
+}
+
+.card-body, .card-title, .card-text {
+  background-color: rgb(92, 131, 116) !important;
+}
+
+.card-title {
+  font-weight: bolder !important;
+  color:rgb(3, 33, 49) !important;
+}
