@@ -4,14 +4,14 @@ function Card({data}) {
   return (
     
     <div class="card m-2 border-info">
-    <h6 class="card-header d-flex align-items-center justify-content-center">{data.company_name.toUpperCase()}</h6>
+    <h6 class="card-header p-1 d-flex align-items-center justify-content-center">{data.company_name.toUpperCase()}</h6>
     <div class="card-body">
         <h6 class="card-title align-items-center fs-5 mb-5">{data.title}</h6>
-        <div className='row justify-content-center card-text tagHolder'>
-            {data.tags && data.tags.map(tag => (
-                <span class="badge m-1 col-sm-10  p-3">{tag}</span>
-            ))}
-        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Tags: {data.tags}</li>
+          <li class="list-group-item">Work place: {data.remote ? 'Remote': 'On-site'}</li>
+          <li class="list-group-item">Location: {data.location}</li>
+        </ul>
     </div>
     <a href={data.url} class="btn card-footer">Read more</a>
 </div>

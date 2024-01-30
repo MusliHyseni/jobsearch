@@ -1,5 +1,5 @@
 * {
-  background-color: rgb(4, 13, 18);
+  background-color: rgb(27, 66, 66);
   font-family: "Montserrat", sans-serif;
 }
 
@@ -12,12 +12,24 @@
   justify-content: right !important;
 }
 
-nav, .navDiv, Link, li, a, span, .ulHolder {
-  background-color:rgb(24, 61, 61) !important;
+.footer {
+  min-width: 100% !important;
+  margin: 0 !important;
+  margin-top: 7% !important;
+  padding: 4% !important;
+  color: white;
+}
+
+.footer p {
+  text-align: center !important;
+}
+
+Link, a, .footer, .footer p {
+  background-color:rgb(39, 78, 78) !important;
 }
 
 .card {
-  height: 450px !important;
+  height: 500px !important;
 }
 
 h1 {
@@ -30,27 +42,27 @@ h1 {
 }
 
 .card h6.card-header, .card-footer {
-  color: rgb(147, 177, 166) !important;
+  color: rgb(155, 192, 178) !important;
 }
 
 .card h6.card-header:hover, .card-footer:hover {
-  color: rgb(177, 209, 197) !important;
+  color: rgb(204, 223, 216) !important;
 }
 
 .card-header{
   background-color: rgb(41, 73, 73) !important;
-  height: 17% !important;
+  height: 18% !important;
 }
 
 .card-title {
   height: 25% !important;
 }
 
-.card-body, .card-title, .card-text {
-  background-color: rgb(92, 131, 116) !important;
+.card-body, .card-title, .card-text, .list-group li{
+  background-color: rgb(159, 201, 185) !important;
 }
 
 .card-title {
   font-weight: bolder !important;
-  color:rgb(3, 33, 49) !important;
+  color:rgb(7, 37, 53) !important;
 }

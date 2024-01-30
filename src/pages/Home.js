@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import poster from '../assets/images/Poster.png'
 import Card from '../components/Card'
+import { Link } from 'react-router-dom'
+import Jobs from './Jobs'
 
 function Home() {
   const [jobs, setJobs] = useState([])
@@ -12,6 +14,7 @@ function Home() {
   }, [])
 
   return (
+    <>
     <div className='row justify-content-center'>
       <img src={poster} className='mb-5'/>
       <h1 className='fw-bold mb-5 '>Your dream career starts with us!</h1>
@@ -21,6 +24,8 @@ function Home() {
         </div>
       ))}
     </div>
+    <Link to='/jobs' element={<Jobs/>} className='btn endButton'>See more jobs</Link>
+    </>
   )
 }
 
