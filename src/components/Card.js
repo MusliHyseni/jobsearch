@@ -3,17 +3,17 @@ import React from 'react'
 function Card({data}) {
   return (
     
-    <div class="card m-2 border-info">
-    <h6 class="card-header p-1 d-flex align-items-center justify-content-center">{data.company_name.toUpperCase()}</h6>
-    <div class="card-body">
-        <h6 class="card-title align-items-center fs-5 mb-5">{data.title}</h6>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Tags: {data.tags}</li>
-          <li class="list-group-item">Work place: {data.remote ? 'Remote': 'On-site'}</li>
-          <li class="list-group-item">Location: {data.location}</li>
+    <div className="card m-4 border-info">
+    <h6 className="card-header p-1 d-flex align-items-center justify-content-center">{data.company_name.toUpperCase()}</h6>
+    <div className="card-body">
+        <h6 className="card-title align-items-center fs-5 mb-5">{data.title}</h6>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">Tags: {data.tags}</li>
+          <li className="list-group-item">Work place: <span className={data.remote ? "text-danger fw-bold" : "text-primary fw-bold"}>{data.remote ? 'Remote': 'On-site'}</span></li>
+          <li className="list-group-item">Location: {data.location}</li>
         </ul>
     </div>
-    <a href={data.url} class="btn card-footer">Read more</a>
+    <a href={data.url} className="btn card-footer">Read more</a>
 </div>
         
        

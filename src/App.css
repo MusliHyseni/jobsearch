@@ -1,11 +1,19 @@
 * {
-  background-color: rgb(27, 66, 66);
   font-family: "Montserrat", sans-serif;
+}
+body {
+	background-color: rgb(42, 77, 77);
 }
 
 .App {
   text-align: center;
 }
+
+nav {
+  background-color: rgb(10, 29, 29) !important;
+  padding: 0px !important;
+}
+
 
 .ulHolder {
   display: flex !important;
@@ -24,8 +32,8 @@
   text-align: center !important;
 }
 
-Link, a, .footer, .footer p {
-  background-color:rgb(39, 78, 78) !important;
+Link, .card-footer, .footer, .footer p {
+  background-color:rgb(40, 85, 85) !important;
 }
 
 .card {
@@ -64,5 +72,5 @@ h1 {
 
 .card-title {
   font-weight: bolder !important;
-  color:rgb(7, 37, 53) !important;
+  color:rgb(10, 41, 58) !important;
 }
