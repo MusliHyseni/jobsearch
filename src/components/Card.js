@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Card({data}) {
   return (
@@ -12,6 +13,9 @@ function Card({data}) {
           <li className="list-group-item">Work place: <span className={data.remote ? "text-danger fw-bold" : "text-primary fw-bold"}>{data.remote ? 'Remote': 'On-site'}</span></li>
           <li className="list-group-item">Location: {data.location}</li>
         </ul>
+        <Link to='/user-details' className='btn btn-secondary m-4'>
+          Apply
+        </Link>
     </div>
     <a href={data.url} className="btn card-footer">Read more</a>
 </div>
