@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import poster from '../assets/images/Poster.png'
-import Card from '../components/Card'
+import DataCard from '../components/Card'
 import { Link } from 'react-router-dom'
 import Jobs from './Jobs'
 
@@ -20,7 +20,7 @@ function Home() {
       <h1 className='fw-bold mb-5 '>Your dream career starts with us!</h1>
       {jobs && jobs.map((job, index) => (
         <div className='col-3 m-1' key={index}>
-          <Card data={job}/>
+          <DataCard data={job}/>
         </div>
       ))}
     </div>
