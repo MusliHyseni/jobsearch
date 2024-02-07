@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import DataCard from '../components/Card';
 import {Container } from 'react-bootstrap';
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
+import ScrollMenu from '../components/ScrollMenu';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -26,20 +26,14 @@ function Jobs() {
   
 
   return (
-    <Container>
-      {visited && visited != undefined && visited.map((name, index) => (
-        <Container key={index} className=''>
-          <h3>{name}</h3>
-          <ScrollMenu>
-            {jobs.filter((job, index) => (
-              job.tags[0] == name
-            )).map((item, index) => (
-              <DataCard data={item} key={index}/>
-            ))}
-          </ScrollMenu>
-        </Container>
-      ))}
-    </Container>
+    <Container className=''>
+    {visited && visited.map((name, index) => (
+      <Container key={index} className=''>
+        <h3>{name}</h3>
+        <ScrollMenu data={jobs.filter(job => (job.tags[0] == name))}/>
+      </Container>
+    ))}
+  </Container>
   )
 }
 

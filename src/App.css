@@ -74,3 +74,41 @@ h1 {
   font-weight: bolder !important;
   color:rgb(10, 41, 58) !important;
 }
+
+.scrollMenu-container {
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.content-box {
+  width: 100vw !important;
+  display: flex !important;
+  align-items: center !important;
+  -ms-overflow-style: none !important; 
+  scrollbar-width: none !important; 
+}
+
+.content-box::-webkit-scrollbar {
+  display: none !important; 
+}
+
+.scrollCard {
+  min-width: 380px !important;
+  height: 200px !important;
+  margin: 2% !important;
+}
+
+.action-btns {
+  width: 20%;
+  padding: 3%;
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 2% !important;
+  margin-top: 2%;
+  position: absolute;
+}
