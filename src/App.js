@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/jobs' element={<Jobs/>}/>
+        <Route path='/jobs/:job-tag/apply'/>
         <Route path='/myjobs' element={<MyJobs/>}/>
       </Routes>
     <Footer/>
