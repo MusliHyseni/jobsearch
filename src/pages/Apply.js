@@ -1,57 +1,69 @@
-import React from 'react'
+import React from 'react';
+
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { redirect } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
-function Apply(job) {
+
+function Apply() {
+  const [applied, setApplied] = useLocalStorage("applied_job");
+  const [allApps, setAllApps] = useLocalStorage("allApps");
+
+
+  const handleApply = e => {
+    e.preventDefault()
+    const form = e.target.elements;
+
+    let application = {
+      company: form['company'].value,
+      job: form['job'].value,
+      category: form['category'].value
+    }
+
+    if (allApps == undefined) {
+      setAllApps(application);
+    } else {
+      setAllApps(allApps => [allApps, application]);
+    }
+
+    window.location.href = 'http://localhost:3000/myjobs';
+  }
+
   return (
-    <Form>
-        <Row className='mb-3'>
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Company</Form.Label>
-          <Form.Control type="text" readOnly placeholder={job.company_name}/>
-        </Form.Group>
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Job</Form.Label>
-          <Form.Control type="text" readOnly placeholder={job.title}/>
-        </Form.Group>
-        </Row>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
+    <>
+    <form method='POST' onSubmit={handleApply} className='p-4 form'>
+      <div className='row'>
+        <label htmlFor="company" className='fw-bold'>Company</label>
+        <input className="col rounded-1" type='text' disabled name='company' value={applied[1].toUpperCase()} id='company'/>
+     
+        <label htmlFor="job" className='fw-bold'>Job</label>
+        <input className="col rounded-1" type='text' disabled name='job' value={applied[0]} id='job' required/>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-      </Row>
+        <label htmlFor="category" className='fw-bold'>Job category</label>
+        <input className="col rounded-1" type='text' disabled name='category' value={applied[2]} id='category' required/>
+      </div>
 
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>Applying for:</Form.Label>
-          <Form.Select defaultValue={job.job_types[0]}>
-            <option>{job.job_types[0] && job.job_types[0]}</option>
-            <option>{job.job_types[1] && job.job_types[1]}</option>
-          </Form.Select>
-        </Form.Group>
+      <div className='row'>
+        <label htmlFor="email" className='fw-bold'>Email</label>
+        <input className="col rounded-1" type='text' name='email' id='email' placeholder='Enter email' required/>
 
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-      </Row>
+        <label htmlFor="password" className='fw-bold'>Password</label>
+        <input className="col rounded-1" type='password' name='password' id='password' placeholder='Enter password' required/>
+      </div>
+      <div class="row">
+          <label for="formFile" className="form-label fw-bold">Submit CV</label>
+          <input className="form-control rounded-1" type="file" id="formFile"/>
+      </div>
+      <div className='row'>
+      <button type="submit" className='btn btn-outline-primary col'>Apply</button>
+      </div>
+    </form>
 
-      <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+    </>
   )
 }
 

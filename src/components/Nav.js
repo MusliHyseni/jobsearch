@@ -20,14 +20,14 @@ function NavBar() {
                 </span>
                 JobSearch
             </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-            <Nav.Link href="/" className="nav-link active text-light" aria-current="page">Home</Nav.Link>
-            <Nav.Link href="/jobs" className="nav-link text-light" aria-current="page">Jobs</Nav.Link>
-            <Nav.Link href="/myjobs" className="nav-link text-light" aria-current="page">My jobs</Nav.Link>
-            </Nav>
-        </Navbar.Collapse>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Nav.Link href="/" className="nav-link active text-light" aria-current="page">Home</Nav.Link>
+                    <Nav.Link href="/jobs" className="nav-link text-light" aria-current="page">Jobs</Nav.Link>
+                    <Nav.Link href="/myjobs" className="nav-link text-light" aria-current="page">My jobs</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
         </Container>
     </Navbar>
 )

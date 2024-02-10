@@ -1,10 +1,16 @@
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+
 import NavBar from './components/Nav';
 import Footer from './components/Footer';
+
 import Home from '../src/pages/Home';
 import Jobs from '../src/pages/Jobs';
 import MyJobs from '../src/pages/MyJobs';
+import Apply from './pages/Apply';
+
+
+
 
 function App() {
   return (
@@ -13,7 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/jobs' element={<Jobs/>}/>
-        <Route path='/jobs/:job-tag/apply'/>
+        <Route path='/jobs/apply' element={<Apply/>}/>
         <Route path='/myjobs' element={<MyJobs/>}/>
       </Routes>
     <Footer/>

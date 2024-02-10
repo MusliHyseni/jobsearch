@@ -24,7 +24,7 @@ function Home() {
         </div>
       ))}
     </div>
-    <Link to='/jobs' element={<Jobs/>} className='btn endButton'>See more jobs</Link>
+    <Link to='/jobs' className='btn endButton '>See more jobs</Link>
     </>
   )
 }

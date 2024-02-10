@@ -26,6 +26,7 @@ nav {
   margin-top: 7% !important;
   padding: 4% !important;
   color: white;
+  bottom: 0px !important;
 }
 
 .footer p {
@@ -176,6 +177,7 @@ h1 {
   color: white;
   padding: 1%;
   border-radius: 7px;
+  z-index: 3;
 }
 
 .dropdown a[role="button"] {
@@ -183,9 +185,41 @@ h1 {
   color: black !important;
 }
 
+.filterLink:hover {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
 .buttons {
   position: absolute;
   bottom: 0% !important;
   width: 100%;
   padding: 3%;
+}
+
+.removeFilters {
+  position: sticky !important;
+  left: 4.6%;
+  top: 4% !important; 
+  padding: 0.5%;
+  border-radius: 7px;
+  z-index: 2;
+}
+
+form {
+  width: 50% !important;
+  margin: 3% auto;
+}
+
+input {
+  margin: 4% 0;
+}
+
+input {
+  border: none !important;
+  padding: 2%;
+}
+
+.endButton {
+  margin: 3% auto !important;
 }

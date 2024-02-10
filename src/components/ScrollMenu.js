@@ -1,21 +1,31 @@
+import { useLocalStorage, useCopyToClipboard } from '@uidotdev/usehooks';
 import React, { useRef, useState } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+
+
 function ScrollMenu(data) {
-    const [scrollPos, setScrollPos] = useState(0)
+    const [scrollPos, setScrollPos] = useState(0);
     const containerRef = useRef();
+    const [applied, setApplied] = useLocalStorage("applied_job");
 
     function handleScroll(scrollAmount) {
         const newScrollPos = scrollPos + scrollAmount;
         setScrollPos(newScrollPos);
-
         containerRef.current.scrollLeft = newScrollPos;
+    }
+
+
+    const handleApplication = e => {
+        const [jobTitle, jobCompany, jobCategory] = e.target.getAttribute("id").split(',');
+        setApplied([jobTitle, jobCompany, jobCategory]);
     }
 
     
 
   return (
-    <>
+    <>  
+       
         <Container className='scrollMenu-container w-100 my-3'>
             <div ref={containerRef} 
                 className='holder w-100 m-0'
@@ -34,7 +44,7 @@ function ScrollMenu(data) {
                                 <p className='mt-4 mb-1 fw-bold'>{item.slug.toUpperCase()}</p>
                                 <div className='row buttons'>
                                     <Button href={item.url} className='col mx-2 btn-secondary'>Read more</Button>
-                                    <Link to={`/jobs/apply`} className='col mx-2 btn-secondary btn btn-danger'>Apply</Link>
+                                    <Link to={`/jobs/apply`} onClick={handleApplication} id={[item.title,item.company_name,item.tags[0]]} className='col mx-2 btn-secondary btn btn-danger'>Apply</Link>
                                 </div>
                             </div> 
                         </Card>
