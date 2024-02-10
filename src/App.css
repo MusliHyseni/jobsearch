@@ -2,7 +2,7 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
-	background-color: rgb(42, 77, 77);
+	background-color: rgb(230, 230, 230);
 }
 
 .App {
@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-  background-color: rgb(10, 29, 29) !important;
+  background-color: rgb(130, 130, 130) !important;
   padding: 0px !important;
 }
 
@@ -33,7 +33,7 @@ nav {
 }
 
 Link, .card-footer, .footer, .footer p {
-  background-color:rgb(40, 85, 85) !important;
+  background-color:rgb(27, 29, 29) !important;
 }
 
 .card {
@@ -58,7 +58,7 @@ h1 {
 }
 
 .card-header{
-  background-color: rgb(41, 73, 73) !important;
+  background-color: rgb(35, 63, 63) !important;
   height: 18% !important;
 }
 
@@ -67,7 +67,7 @@ h1 {
 }
 
 .card-body, .card-title, .card-text, .list-group li{
-  background-color: rgb(159, 201, 185) !important;
+  background-color: rgb(200, 219, 212) !important;
 }
 
 .card-title {
@@ -82,33 +82,110 @@ h1 {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+  -ms-overflow-style: none !important; 
+  scrollbar-width: none !important; 
+  border: 2px solid black;
+  min-width: 100vw !important;
+
+}
+
+.scrollMenu-container::-webkit-scrollbar {
+  display: none !important; 
 }
 
 .content-box {
   width: 100vw !important;
   display: flex !important;
   align-items: center !important;
+}
+
+.holder {
   -ms-overflow-style: none !important; 
   scrollbar-width: none !important; 
 }
 
-.content-box::-webkit-scrollbar {
+.holder::-webkit-scrollbar {
   display: none !important; 
+}
+
+.myContainer, .otherContainer {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 100vw !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+}
+
+.scrollMenu-container {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.otherContainer {
+  max-height: 400px !important;
+  margin: 4% 0 !important;
+}
+
+.myContainer {
+  margin-top: 3% !important;
 }
 
 .scrollCard {
   min-width: 380px !important;
-  height: 200px !important;
+  max-width: 800px  !important;
+  min-width: 580px !important;
+  height: 280px !important;
   margin: 2% !important;
+  border: 2px solid black;
+}
+
+.scrollCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  cursor: pointer;
+}
+
+.category-title {
+  text-align: center !important;
 }
 
 .action-btns {
-  width: 20%;
-  padding: 3%;
-  display: flex !important;
-  flex-direction: row;
-  align-items: center;
+  width: 12%;
   gap: 2% !important;
-  margin-top: 2%;
+  position: static;
+  margin: 0px auto !important;
+}
+
+.dropdown-menu {
+  max-height: 250px !important;
+  max-width: 270px !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
+.dropdown {
+  margin-top: 4%;
+}
+
+.dropdown a {
+  position: sticky !important;
+  left: 3%;
+  top: 4% !important; 
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: 1%;
+  border-radius: 7px;
+}
+
+.dropdown a[role="button"] {
+  background-color: white !important;
+  color: black !important;
+}
+
+.buttons {
   position: absolute;
+  bottom: 0% !important;
+  width: 100%;
+  padding: 3%;
 }
