@@ -17,14 +17,16 @@ function Home() {
     <>
     <div className='row justify-content-center'>
       <img src={poster} className='mb-5'/>
-      <h1 className='fw-bold mb-5 '>Your dream career starts with us!</h1>
+      <div className='row'>
+        <Link to='/jobs' className='col btn bg-danger text-white endButton '>See more jobs</Link>
+        <h1 className='col fw-bold mb-5 '>Your dream career starts with us!</h1>
+      </div>
       {jobs && jobs.map((job, index) => (
         <div className='col-3 m-1' key={index}>
           <DataCard data={job}/>
         </div>
       ))}
     </div>
-    <Link to='/jobs' className='btn endButton '>See more jobs</Link>
     </>
   )
 }

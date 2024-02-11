@@ -8,6 +8,7 @@ function ScrollMenu(data) {
     const [scrollPos, setScrollPos] = useState(0);
     const containerRef = useRef();
     const [applied, setApplied] = useLocalStorage("applied_job");
+    const [allApps, setAllApps] = useLocalStorage("allApps");
 
     function handleScroll(scrollAmount) {
         const newScrollPos = scrollPos + scrollAmount;
@@ -15,10 +16,16 @@ function ScrollMenu(data) {
         containerRef.current.scrollLeft = newScrollPos;
     }
 
-
+    
     const handleApplication = e => {
         const [jobTitle, jobCompany, jobCategory] = e.target.getAttribute("id").split(',');
-        setApplied([jobTitle, jobCompany, jobCategory]);
+        if ( !(allApps.filter(app => (
+            app.company == jobCompany && app.job == jobTitle && app.category == jobCategory
+        )).length)) {
+            setApplied([jobTitle, jobCompany, jobCategory]);
+        } else {
+            alert("You have already applied for this job!");
+        }
     }
 
     
@@ -44,7 +51,15 @@ function ScrollMenu(data) {
                                 <p className='mt-4 mb-1 fw-bold'>{item.slug.toUpperCase()}</p>
                                 <div className='row buttons'>
                                     <Button href={item.url} className='col mx-2 btn-secondary'>Read more</Button>
-                                    <Link to={`/jobs/apply`} onClick={handleApplication} id={[item.title,item.company_name,item.tags[0]]} className='col mx-2 btn-secondary btn btn-danger'>Apply</Link>
+                                    <Link to={allApps.filter(job => (
+                                                job.company == item.company_name && job.job == item.title && job.category == item.tags[0]
+                                            )).length ? "#" : `/jobs/apply`} onClick={handleApplication} id={[item.title,item.company_name,item.tags[0]]} className='col mx-2 btn-secondary btn btn-danger'>
+                                        {
+                                            allApps.filter(job => (
+                                                job.company == item.company_name && job.job == item.title && job.category == item.tags[0]
+                                            )).length ? "Applied" : "Apply"
+                                        }
+                                    </Link>
                                 </div>
                             </div> 
                         </Card>

@@ -27,7 +27,13 @@ function Apply() {
     if (allApps == undefined) {
       setAllApps(application);
     } else {
-      setAllApps(allApps => [allApps, application]);
+      if (!(allApps.filter(app => (
+        app.company == application.company && app.job == application.job && app.category == application.category
+      )).length)) {
+        setAllApps(allApps => [allApps, application]);
+      } else {
+        alert("You have already appied for this job!");
+      }
     }
 
     window.location.href = 'http://localhost:3000/myjobs';
