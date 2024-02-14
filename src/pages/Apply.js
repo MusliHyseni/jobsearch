@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 
 function Apply() {
   const [applied, setApplied] = useLocalStorage("applied_job");
-  const [allApps, setAllApps] = useLocalStorage("allApps");
+  const [allApps, setAllApps] = useLocalStorage("allApps", {company: "No job", job: "No job", category: "No job"});
 
 
   const handleApply = e => {
@@ -19,25 +19,18 @@ function Apply() {
     const form = e.target.elements;
 
     let application = {
+      ...allApps,
       company: form['company'].value,
       job: form['job'].value,
       category: form['category'].value
     }
 
-    if (allApps == undefined) {
-      setAllApps(application);
-    } else {
-      if (!(allApps.filter(app => (
-        app.company == application.company && app.job == application.job && app.category == application.category
-      )).length)) {
-        setAllApps(allApps => [allApps, application]);
-      } else {
-        alert("You have already appied for this job!");
-      }
-    }
-
-    window.location.href = 'http://localhost:3000/myjobs';
-  }
+    
+      setAllApps([application]);
+      window.location.href = 'http://localhost:3000/myjobs';
+  } 
+    
+  
 
   return (
     <>
@@ -58,7 +51,7 @@ function Apply() {
         <input className="col rounded-1" type='text' name='email' id='email' placeholder='Enter email' required/>
 
         <label htmlFor="password" className='fw-bold'>Password</label>
-        <input className="col rounded-1" type='password' name='password' id='password' placeholder='Enter password' required/>
+        <input className="col rounded-1" type='password' name='password' id='password' placeholder='Enter password' minLength={8} required/>
       </div>
       <div class="row">
           <label for="formFile" className="form-label fw-bold">Submit CV</label>

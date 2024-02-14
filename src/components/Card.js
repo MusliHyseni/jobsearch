@@ -2,14 +2,19 @@ import { useLocalStorage } from '@uidotdev/usehooks';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 function DataCard({data}) {
+  const [allApps, setAllApps] = useLocalStorage("allApps");
   const [applied, setApplied] = useLocalStorage("applied_job");
 
   const handleApplication = e => {
     const [jobTitle, jobCompany, jobCategory] = e.target.getAttribute("id").split(',');
-    setApplied([jobTitle, jobCompany, jobCategory]);
-  }
+    if (!Object.values(allApps).includes({company: jobCompany, job: jobTitle, category: jobCategory})) {
+      setApplied([jobTitle, jobCompany, jobCategory]);
+    } else {
+      alert("You have already applied for this job");
+    }
+  } 
+
 
   return (
     <div className="card m-4 border-info">
@@ -21,16 +26,12 @@ function DataCard({data}) {
           <li className="list-group-item">Work place: <span className={data.remote ? "text-danger fw-bold" : "text-primary fw-bold"}>{data.remote ? 'Remote': 'On-site'}</span></li>
           <li className="list-group-item">Location: {data.location}</li>
         </ul>
-        <Link to={`/jobs/apply`} onClick={handleApplication} id={[data.title,data.company_name,data.tags[0]]} className='btn btn-secondary m-4'>
+        <Link to={`/jobs/apply`} onClick={handleApplication} id={[data.title,data.title,data.tags[0]]} className='btn btn-secondary m-4'>
           Apply
         </Link>
     </div>
-    <a href={data.url} className="btn card-footer">Read more</a>
-</div>
-        
-       
-        
-        
+      <a href={data.url} className="btn card-footer">Read more</a>
+    </div>     
     
   )
 }

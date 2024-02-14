@@ -23,10 +23,10 @@ nav {
 .footer {
   min-width: 100% !important;
   margin: 0 !important;
-  margin-top: 7% !important;
+  margin-top: 12% !important;
   padding: 4% !important;
   color: white;
-  bottom: 0px !important;
+  bottom: 1px !important;
 }
 
 .footer p {
@@ -228,6 +228,21 @@ input {
 
 Table {
   width: 80% !important;
+  border: 1px solid black !important;
+}
+
+td {
+  padding: 3% !important;
+  border: 1px solid black !important;
+}
+
+th {
+  background-color: rgb(245, 245, 245) !important;
+  border: 1px solid black !important;
+}
+
+thead {
+  text-align: center !important;
 }
 
 .list {
@@ -245,4 +260,10 @@ Table {
   width: 100% !important;
   margin: 5% auto !important;
   padding: 1% !important;
+}
+
+.yourJobsTitle {
+  color: black !important;
+  text-shadow: none !important;
+  margin-top: 9%;
 }

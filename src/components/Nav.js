@@ -4,8 +4,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 function NavBar() {
+    const [allApps, setAllApps] = useLocalStorage("allApps");
+    const [user, setUser] = useLocalStorage('loggedin');
+
+    const handleLogout = e => {
+        e.preventDefault()
+        setUser(undefined)
+        window.location.href = 'http://localhost:3000/'
+  }
   return (
 
     <Navbar expand="lg" className="navbar navbar-expand-lg d-flex justify-content-between">
@@ -22,10 +31,23 @@ function NavBar() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className="ms-auto">
                     <Nav.Link href="/" className="nav-link active text-light" aria-current="page">Home</Nav.Link>
                     <Nav.Link href="/jobs" className="nav-link text-light" aria-current="page">Jobs</Nav.Link>
-                    <Nav.Link href="/myjobs" className="nav-link text-light" aria-current="page">My jobs</Nav.Link>
+                    <NavDropdown className="nav-link text-light" title={user ? user.fullname : 'Guest'} id="basic-nav-dropdown">
+                        {
+                            (user != undefined) ? <>
+                            <NavDropdown.Item href="/myjobs" className="nav-link text-light" aria-current="page">My jobs <span className='bg-danger p-1 px-2 fw-bold rounded-5'>{(allApps != undefined && allApps.length) && allApps.length}</span></NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#" className="nav-link text-light"onClick={handleLogout}>
+                            Logout
+                            </NavDropdown.Item>
+                            </> : <>
+                            <NavDropdown.Item href="/login" className="nav-link text-light">Login</NavDropdown.Item>
+                            <NavDropdown.Item href="/signup" className="nav-link text-light">Sign up</NavDropdown.Item>
+                            </>
+                        }
+                    </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
         </Container>
