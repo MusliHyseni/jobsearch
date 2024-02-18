@@ -6,8 +6,10 @@ import {Link} from 'react-router-dom';
 function ScrollMenu(data) {
     const [scrollPos, setScrollPos] = useState(0);
     const containerRef = useRef();
-    const [allApps, setAllApps] = useLocalStorage("allApps", {company: "No job", job: "No job", category: "No job"});
+    const [allApps, setAllApps] = useLocalStorage("allApps", []);
     const [applied, setApplied] = useLocalStorage("applied_job");
+    const [loggedin, setLoggedIn] = useLocalStorage("loggedin");
+
 
 
     function handleScroll(scrollAmount) {
@@ -17,14 +19,17 @@ function ScrollMenu(data) {
     }
 
     const handleApplication = e => {
-        const [jobTitle, jobCompany, jobCategory] = e.target.getAttribute("id").split(',');
-        setApplied([jobTitle, jobCompany, jobCategory]);
+        if (loggedin != undefined) {
+            const [jobTitle, jobCompany, jobCategory] = e.target.getAttribute("id").split(',');
+            setApplied([jobTitle, jobCompany, jobCategory]);
+        } else {
+            alert("Log in to apply to jobs!");
+        }
     }
 
 
   return (
     <>  
-       
         <Container className='scrollMenu-container w-100 my-3'>
             <div ref={containerRef} 
                 className='holder w-100 m-0'
@@ -43,7 +48,7 @@ function ScrollMenu(data) {
                                 <p className='mt-4 mb-1 fw-bold'>{item.slug.toUpperCase()}</p>
                                 <div className='row buttons'>
                                     <Button href={item.url} className='col mx-2 btn-secondary'>Read more</Button>
-                                    <Link to={'/jobs/apply'} onClick={handleApplication} id={[item.title,item.company_name,item.tags[0]]} className='col mx-2 btn-secondary btn btn-danger'>
+                                    <Link to={loggedin != undefined ? `/jobs/apply` : '/login'} onClick={handleApplication} id={[item.title,item.company_name,item.tags[0]]} className="col mx-2 btn-secondary btn btn-danger">
                                        Apply
                                     </Link>
                                 </div>

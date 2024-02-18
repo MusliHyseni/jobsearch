@@ -31,20 +31,21 @@ function NavBar() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ms-auto">
+                <Nav className="ms-auto d-flex align-items-center">
                     <Nav.Link href="/" className="nav-link active text-light" aria-current="page">Home</Nav.Link>
                     <Nav.Link href="/jobs" className="nav-link text-light" aria-current="page">Jobs</Nav.Link>
-                    <NavDropdown className="nav-link text-light" title={user ? user.fullname : 'Guest'} id="basic-nav-dropdown">
+                    <Nav.Link href="/addjob" className="nav-link text-light" aria-current="page">Post jobs</Nav.Link>
+                    <NavDropdown className="nav-link text-light userLink" title={user ? user.fullname : 'Guest'} id="basic-nav-dropdown" style={{overflow: "hidden"}}>
                         {
                             (user != undefined) ? <>
-                            <NavDropdown.Item href="/myjobs" className="nav-link text-light" aria-current="page">My jobs <span className='bg-danger p-1 px-2 fw-bold rounded-5'>{(allApps != undefined && allApps.length) && allApps.length}</span></NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#" className="nav-link text-light"onClick={handleLogout}>
-                            Logout
-                            </NavDropdown.Item>
-                            </> : <>
-                            <NavDropdown.Item href="/login" className="nav-link text-light">Login</NavDropdown.Item>
-                            <NavDropdown.Item href="/signup" className="nav-link text-light">Sign up</NavDropdown.Item>
+                                <NavDropdown.Item> <Link to="/myjobs" className="nav-link text-dark bg-white fw-bold mx-3" aria-current="page">My jobs <span className='bg-danger p-1 px-2 fw-bold rounded-5'>{(allApps != undefined && allApps.length) && allApps.length}</span></Link></NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item><Link to="#" className="nav-link text-dark bg-white fw-bold mx-3" onClick={handleLogout}>Logout</Link></NavDropdown.Item>
+                            </> : 
+                            <>
+                                <NavDropdown.Item ><Link to="/login" className="nav-link text-dark bg-white fw-bold mx-3">Login</Link></NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item><Link to="/signup" className="nav-link text-dark bg-white fw-bold mx-3">Sign up</Link></NavDropdown.Item>
                             </>
                         }
                     </NavDropdown>

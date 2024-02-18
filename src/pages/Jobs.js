@@ -5,12 +5,15 @@ import {Container, Button} from 'react-bootstrap';
 
 import DataCard from '../components/Card';
 import ScrollMenu from '../components/ScrollMenu';
+import { useLocalStorage } from '@uidotdev/usehooks';
 
 
 function Jobs() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useLocalStorage("jobs", []);
   const [prevJobs, setPrevJobs] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
+  const [loggedin, setLoggedIn] = useLocalStorage("loggedin");
+
   
   useEffect(() => {
     fetch('https://www.arbeitnow.com/api/job-board-api')
