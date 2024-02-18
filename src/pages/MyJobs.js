@@ -44,7 +44,11 @@ return (
           <th>Job</th>
           <th>Category</th>
         </tr>
+<<<<<<< HEAD
         {allApps && (allApps.filter(post => post.poster && post.poster == loggedin.id)).map((post, index) => (
+=======
+        {allApps && allApps.filter(post => post.poster && post.poster == loggedin.id).map((post, index) => (
+>>>>>>> 9b22179b86df0c05c346596e30d0704555e7fc71
           <>
             <tr key={index}className='fw-bold bg-secondary'>
               <td>{post.company}</td>

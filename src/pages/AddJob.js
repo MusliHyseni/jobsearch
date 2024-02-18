@@ -9,6 +9,7 @@ function AddJob() {
     
     const handlePostPosition = e => {
         e.preventDefault()
+<<<<<<< HEAD
         if (loggedin == undefined) {
             alert("Log in to post jobs!");
             window.location.href = 'http://localhost:3000/login';
@@ -31,6 +32,23 @@ function AddJob() {
   return (
     <>
         <h2 className='titleText mt-5 fw-bold'>Have an open position? We've got you covered.</h2>
+=======
+        const form = e.target.elements;
+
+        const addedJob = {
+            company: form['company'].value,
+            job: form['job'].value,
+            category: form['category'].value,
+            poster: loggedin.id
+        }
+
+        setJobs([...jobs, addedJob]);
+        window.location.href = 'http://localhost:3000/myjobs';
+    }
+  return (
+    <>
+        <h2 className='titleText mt-5'>Have an open position? We've got you covered.</h2>
+>>>>>>> 9b22179b86df0c05c346596e30d0704555e7fc71
         <Container className='my-5 container-fluid primaForm bg-white p-5'>
             <form method="POST" onSubmit={handlePostPosition} className='container-fluid'>
                 <div className='row'>
