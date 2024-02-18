@@ -45,9 +45,9 @@ h1 {
   text-align: center;
   color: #fff;
   text-shadow:
-    0 0 2px #fff,
+    0 0 1px #fff,
     0 0 5px rgb(49, 92, 92),
-    0 0 8px rgb(25, 224, 224);
+    0 0 2px rgb(25, 224, 224);
 }
 
 .card h6.card-header, .card-footer {
@@ -266,4 +266,29 @@ thead {
   color: black !important;
   text-shadow: none !important;
   margin-top: 9%;
+}
+
+.userLink {
+  background-color: rgb(130, 130, 130) !important;
+}
+
+.dropdown-item {
+  display: flex !important;
+  z-index: 5;
+}
+
+form input {
+  border: 1px solid black !important;
+}
+
+.primaForm {
+  max-width: 65% !important;
+}
+
+.primaForm h4 {
+  margin: 3% auto !important;
+}
+
+h2.titleText {
+  text-align: center !important;
 }
